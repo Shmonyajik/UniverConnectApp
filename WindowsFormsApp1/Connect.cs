@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -21,7 +16,7 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             // Создание строки подключения
-            String ConnectString = "Integrated Security=false; User Id = " + textBox1.Text + "; Password = " + textBox2.Text + @"; server=DESKTOP-FNK5TNL\MY" + textBox3.Text + "; Initial Catalog = UniverConnect" + textBox4.Text;
+            String ConnectString = "Integrated Security=false; User Id = " + textBox1.Text + "; Password = " + textBox2.Text + @"; server= " + textBox3.Text + "; Initial Catalog = " + textBox4.Text;
             // Объявление новой переменной типа SqlConection
             SqlConnection con = new SqlConnection(ConnectString);
             Exception error = null; // Переменная, представляющая ошибки, появляющиеся во время выполнения приложения
@@ -44,7 +39,7 @@ namespace WindowsFormsApp1
                     reader.Read();
                     string a = reader["Rolename"].ToString();
                     reader.Close();
-                   // con.Close();
+                   
                     
                     SqlCommand command1 = new SqlCommand($" SELECT id_user FROM dbo._User WHERE(login = SUSER_SNAME())", con);
                     SqlDataReader reader1 = command1.ExecuteReader();
@@ -55,8 +50,7 @@ namespace WindowsFormsApp1
                     SqlCommand command2 = new SqlCommand($"SELECT  Changed.id_user FROM Changed where Changed.id_user = '{id_user.ToString()}' ", con);
                     SqlDataReader reader2 = command2.ExecuteReader();
                     reader2.Read();
-                    //string str = Convert.ToString(reader2.GetValue(0));
-                    //bool est = !string.IsNullOrEmpty(Convert.ToString(reader2[0]));
+                    
                     bool est = reader2.HasRows;
                     reader2.Close();
                     con.Close();
@@ -82,9 +76,7 @@ namespace WindowsFormsApp1
 
                     }
                     con.Close();
-                    //con.Close(); // Соединение закрывается
-                    //Starosta parent = new Starosta(con, role); // Создается новая родительская форма, содержащая параметр SqlConnection con
-                    //parent.Show(); // Открывается новая родительская форма
+                    
                 }
             }
 
