@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
         public Connect()
         {
             InitializeComponent();
+            MessageBox.Show("Fuck you Brench!");
         }
         private void button1_Click(object sender, EventArgs e)
         {
