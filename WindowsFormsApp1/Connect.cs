@@ -17,7 +17,10 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             // Создание строки подключения
-            String ConnectString = "Integrated Security=false; User Id = " + textBox1.Text + "; Password = " + textBox2.Text + @"; server= " + textBox3.Text + "; Initial Catalog = " + textBox4.Text;
+            String ConnectString = "Integrated Security=false; User Id = " + textBox1.Text + "; Password = " 
+            + textBox2.Text + @"; server= " + textBox3.Text + "; Initial Catalog = " + textBox4.Text;
+            //DESKTOP-FNK5TNL\MY, UniverConnect
+
             // Объявление новой переменной типа SqlConection
             SqlConnection con = new SqlConnection(ConnectString);
             Exception error = null; // Переменная, представляющая ошибки, появляющиеся во время выполнения приложения
