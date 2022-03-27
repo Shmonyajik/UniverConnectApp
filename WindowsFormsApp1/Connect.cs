@@ -12,14 +12,23 @@ namespace WindowsFormsApp1
         public Connect()
         {
             InitializeComponent();
-            MessageBox.Show("Fuck you Brench!");
+            
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            String ConnectString = "Integrated Security=false; User Id = " + textBox1.Text + "; Password = "
+            + textBox2.Text;
             // Создание строки подключения
-            String ConnectString = "Integrated Security=false; User Id = " + textBox1.Text + "; Password = " 
-            + textBox2.Text + @"; server= " + textBox3.Text + "; Initial Catalog = " + textBox4.Text;
-            //DESKTOP-FNK5TNL\MY, UniverConnect
+            if (string.IsNullOrEmpty(textBox3.Text))
+            {
+                ConnectString += "; server= " + @"DESKTOP-FNK5TNL\MY" + "; Initial Catalog = " + "UniverConnect";
+                //DESKTOP-FNK5TNL\MY, UniverConnect
+            }
+            else
+                ConnectString+= "; server= " + textBox3.Text + "; Initial Catalog = " + textBox4.Text;
+            
+            
+                
 
             // Объявление новой переменной типа SqlConection
             SqlConnection con = new SqlConnection(ConnectString);
